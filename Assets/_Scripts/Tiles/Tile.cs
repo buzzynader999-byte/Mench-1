@@ -6,7 +6,6 @@ namespace _Scripts.Tiles
     public class Tile : MonoBehaviour, ITile
     {
         [SerializeField] private bool isSafe;
-        [SerializeField] private bool isStart;
         [SerializeField] private bool isGoal;
         private IPiece _currentPiece;
 
