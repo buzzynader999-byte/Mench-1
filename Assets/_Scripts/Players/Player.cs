@@ -6,9 +6,9 @@ namespace _Scripts.Players
 {
     public abstract class Player : IPlayer
     {
-        private int id;
-        private List<IPiece> pieces;
-        private Color color;
+        private int _id;
+        private List<IPiece> _pieces;
+        private Color _color;
 
         public int GetId()
         {

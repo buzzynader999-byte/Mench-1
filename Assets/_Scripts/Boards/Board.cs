@@ -6,9 +6,9 @@ namespace _Scripts.Boards
 {
     public class Board :ScriptableObject, IBoard
     {
-        private List<ITile>[] paths = new List<ITile>[4];
-        private ITile[] startTiles;
-        private ITile[] goalTiles;
+        private List<ITile>[] _paths = new List<ITile>[4];
+        private ITile[] _startTiles;
+        private ITile[] _goalTiles;
 
         public ITile GetTile(int playerId, int index)
         {

@@ -5,8 +5,8 @@ namespace _Scripts.Tiles
 {
     public class Tile : MonoBehaviour, ITile
     {
-        private IPiece currentPiece;
-        private bool isSafe, isStart, isGoal;
+        private IPiece _currentPiece;
+        private bool _isSafe, _isStart, _isGoal;
 
         public bool IsOccupied()
         {

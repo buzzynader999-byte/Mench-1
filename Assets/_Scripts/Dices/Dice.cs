@@ -2,8 +2,8 @@
 {
     public class Dice : IDice
     {
-        private int lastRoll;
-        private bool extraRoll;
+        private int _lastRoll;
+        private bool _extraRoll;
 
         public int Roll()
         {

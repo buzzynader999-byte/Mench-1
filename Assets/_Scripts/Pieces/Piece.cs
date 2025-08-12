@@ -5,9 +5,9 @@ namespace _Scripts.Pieces
 {
     public class Piece : MonoBehaviour, IPiece
     {
-        private int playerId;
-        private ITile currentTile;
-        private bool inPlay, inGoal;
+        private int _playerId;
+        private ITile _currentTile;
+        private bool _inPlay, _inGoal;
 
         public int GetPlayerId()
         {
