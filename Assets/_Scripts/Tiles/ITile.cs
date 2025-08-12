@@ -6,14 +6,19 @@ namespace _Scripts.Tiles
     {
         //اشغال شده؟
         bool IsOccupied();
+
         // مهرشو بگیر
         IPiece GetPiece();
+
         // مهره داخلش بزار
         void SetPiece(IPiece piece);
+
         // نقطه امنه؟
         bool IsSafeZone();
+
         // نقطه شروعه؟
         bool IsStartTile();
+
         // نقطه آخر یا هدفه؟
         bool IsGoalTile();
     }
