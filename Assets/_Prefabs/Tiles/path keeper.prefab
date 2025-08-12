@@ -1712,6 +1712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reqular Tile (2) -
       objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1938,6 +1942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reqular Tile (4) -
       objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2152,6 +2160,10 @@ PrefabInstance:
     - target: {fileID: 3857887776516245196, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Name
       value: Reqular Tile (2) -
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
@@ -2593,6 +2605,10 @@ PrefabInstance:
     - target: {fileID: 3857887776516245196, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Name
       value: Reqular Tile (4) -
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
@@ -4415,6 +4431,10 @@ PrefabInstance:
     - target: {fileID: 3857887776516245196, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Name
       value: Reqular Tile (4) -
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
@@ -7288,6 +7308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reqular Tile (4) -
       objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8304,6 +8328,10 @@ PrefabInstance:
     - target: {fileID: 3857887776516245196, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Name
       value: Reqular Tile (2) -
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
@@ -9412,6 +9440,10 @@ PrefabInstance:
     - target: {fileID: 3857887776516245196, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Name
       value: Reqular Tile (2) -
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657124275343995617, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
+      propertyPath: isSafe
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7892258503321936001, guid: 26723d296cd3cbf46b59b63970184dab, type: 3}
       propertyPath: m_Pivot.x
