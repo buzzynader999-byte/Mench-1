@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 
 namespace _Scripts.Boards
 {
-    [RequireComponent(typeof(PathKeeper))]
     public class Board : MonoBehaviour, IBoard
     {
         [SerializeField] PathKeeper pathKeeper;
