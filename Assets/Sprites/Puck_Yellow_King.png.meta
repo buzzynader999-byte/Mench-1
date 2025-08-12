@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b5ea14042d2ad514fbcbd89e8d591f69
+guid: 220d3e6e239daba4cbae895b81fb11e3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3863601061129291066
-    second: ludo board_0
+      213: 5850947849199296480
+    second: Puck_Yellow_King_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ludo board_0
+      name: Puck_Yellow_King_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1920
+        width: 1459
+        height: 1539
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a350f62e1b44e9530800000000000000
-      internalID: 3863601061129291066
+      spriteID: 0ef1cd6b11eb23150800000000000000
+      internalID: 5850947849199296480
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ludo board_0: 3863601061129291066
+      Puck_Yellow_King_0: 5850947849199296480
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

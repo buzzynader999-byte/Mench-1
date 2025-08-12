@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b5ea14042d2ad514fbcbd89e8d591f69
+guid: 18a0453ff92124346a5691bd8f959dee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3863601061129291066
-    second: ludo board_0
+      213: 2066518501817898353
+    second: Board_Classic_Red_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ludo board_0
+      name: Board_Classic_Red_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1920
+        x: 64
+        y: 69
+        width: 1794
+        height: 1836
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a350f62e1b44e9530800000000000000
-      internalID: 3863601061129291066
+      spriteID: 175d0a6e0afbdac10800000000000000
+      internalID: 2066518501817898353
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ludo board_0: 3863601061129291066
+      Board_Classic_Red_0: 2066518501817898353
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

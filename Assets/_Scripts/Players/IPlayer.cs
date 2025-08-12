@@ -4,10 +4,18 @@ using UnityEngine;
 
 namespace _Scripts.Players
 {
+    public enum PlayerColor
+    {
+        Blue,
+        Red,
+        Yellow,
+        Green
+    }
+
     public interface IPlayer
     {
         int GetId();
-        List<IPiece> GetPieces();
-        Color GetColor();
+        List<Piece> GetPieces();
+        PlayerColor GetColor();
     }
 }

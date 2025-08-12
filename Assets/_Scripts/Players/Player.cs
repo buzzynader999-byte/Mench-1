@@ -4,25 +4,25 @@ using UnityEngine;
 
 namespace _Scripts.Players
 {
-    public abstract class Player : IPlayer
+    public abstract class Player :MonoBehaviour, IPlayer
     {
-        private int _id;
-        private List<IPiece> _pieces;
-        private Color _color;
+        [SerializeField]private int _id;
+        [SerializeField]private List<Piece> pieces;
+        [SerializeField]private PlayerColor color;
 
         public int GetId()
         {
-            throw new System.NotImplementedException();
+            return _id;
         }
 
-        public List<IPiece> GetPieces()
+        public List<Piece> GetPieces()
         {
-            throw new System.NotImplementedException();
+            return pieces;
         }
 
-        public Color GetColor()
+        public PlayerColor GetColor()
         {
-            throw new System.NotImplementedException();
+            return color;
         }
     }
 }
