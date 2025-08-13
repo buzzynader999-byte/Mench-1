@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile Position
       objectReference: {fileID: 0}
+    - target: {fileID: 6239488106985909073, guid: 5e0119b6ea6365e42b20f95dc038ee59, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8980617554915880728, guid: 5e0119b6ea6365e42b20f95dc038ee59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
