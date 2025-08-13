@@ -37,15 +37,12 @@ public class RenameByNameTool : MonoBehaviour
         }
         else
         {
-            GameObject[] allObjects = FindObjectsOfType<GameObject>();
-            foreach (var obj in allObjects)
+            // همه آبجکت‌ها بر اساس ترتیب Hierarchy
+            foreach (GameObject obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
             {
-                if (obj.name.StartsWith(targetName, System.StringComparison.OrdinalIgnoreCase))
-                    matches.Add(obj);
+                CollectHierarchy(obj.transform, matches);
             }
         }
-
-        matches.Sort((a, b) => a.name.CompareTo(b.name));
 
         int counter = startNumber;
         foreach (var obj in matches)
@@ -75,6 +72,17 @@ public class RenameByNameTool : MonoBehaviour
                 list.Add(child.gameObject);
 
             GetChildrenRecursive(child, list);
+        }
+    }
+
+    private void CollectHierarchy(Transform parent, List<GameObject> list)
+    {
+        if (parent.name.StartsWith(targetName, System.StringComparison.OrdinalIgnoreCase))
+            list.Add(parent.gameObject);
+
+        foreach (Transform child in parent)
+        {
+            CollectHierarchy(child, list);
         }
     }
 }
