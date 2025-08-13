@@ -1,4 +1,5 @@
 ﻿using _Scripts.Pieces;
+using UnityEngine;
 
 namespace _Scripts.Tiles
 {
@@ -21,5 +22,6 @@ namespace _Scripts.Tiles
 
         // نقطه آخر یا هدفه؟
         bool IsGoalTile();
+        public Vector3 GetPosition();
     }
 }

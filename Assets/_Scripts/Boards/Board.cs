@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Players;
 using _Scripts.Tiles;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -31,9 +32,9 @@ namespace _Scripts.Boards
             
         }
 
-        public List<ITile> GetPath(int playerId)
+        public List<Tile> GetPath(PlayerColor targetPlayer)
         {
-            throw new System.NotImplementedException();
+            return pathKeeper.GetPath(targetPlayer);
         }
     }
 }

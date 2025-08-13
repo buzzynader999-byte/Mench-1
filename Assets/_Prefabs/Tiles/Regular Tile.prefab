@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2634389877928053978}
   - component: {fileID: 6657124275343995617}
   m_Layer: 5
-  m_Name: Reqular Tile
+  m_Name: Regular Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,5 +89,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSafe: 0
-  isStart: 0
   isGoal: 0

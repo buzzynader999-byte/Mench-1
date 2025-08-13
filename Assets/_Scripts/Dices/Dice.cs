@@ -1,4 +1,6 @@
-﻿namespace _Scripts.Dices
+﻿using UnityEngine;
+
+namespace _Scripts.Dices
 {
     public class Dice : IDice
     {
@@ -7,12 +9,14 @@
 
         public int Roll()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Fake roll");
+            _lastRoll = 3;
+            return _lastRoll;
         }
 
         public bool CanRollAgain()
         {
-            throw new System.NotImplementedException();
+            return _lastRoll == 6;
         }
     }
 }

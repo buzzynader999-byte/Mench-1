@@ -38,5 +38,10 @@ namespace _Scripts.Tiles
         {
             throw new System.NotImplementedException();
         }
+
+        public Vector3 GetPosition()
+        {
+            return transform.position;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Players;
 using _Scripts.Tiles;
 
 namespace _Scripts.Boards
@@ -10,6 +11,6 @@ namespace _Scripts.Boards
         ITile GetStartTile(int playerId);
         ITile GetGoalTile(int playerId);
         void InitializeBoard();
-        List<ITile> GetPath(int playerId);
+        List<Tile> GetPath(PlayerColor targetPlayer);
     }
 }

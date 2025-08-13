@@ -1,5 +1,8 @@
-﻿using _Scripts.Tiles;
+﻿using System;
+using System.Collections.Generic;
+using _Scripts.Tiles;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _Scripts.Pieces
 {
@@ -8,6 +11,7 @@ namespace _Scripts.Pieces
         private int _playerId;
         private ITile _currentTile;
         private bool _inPlay, _inGoal;
+        public int CurrentTileIndex { private set; get; }
 
         public int GetPlayerId()
         {
@@ -16,12 +20,13 @@ namespace _Scripts.Pieces
 
         public ITile GetCurrentTile()
         {
-            throw new System.NotImplementedException();
+            return _currentTile;
         }
-
-        public void MoveToTile(ITile tile)
+        
+        public void MoveToTile(ITile tile, int tileIndex)
         {
-            throw new System.NotImplementedException();
+            CurrentTileIndex = tileIndex;
+            transform.position = tile.GetPosition();
         }
 
         public bool IsInPlay()
