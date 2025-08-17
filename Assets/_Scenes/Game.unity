@@ -3207,7 +3207,7 @@ PrefabInstance:
       objectReference: {fileID: 1802707348}
     - target: {fileID: 8911213568730896962, guid: 8a8f36c077cf29d45987cdd12d0c36ad, type: 3}
       propertyPath: fakeRoll
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8911213568730896962, guid: 8a8f36c077cf29d45987cdd12d0c36ad, type: 3}
       propertyPath: players.Array.size

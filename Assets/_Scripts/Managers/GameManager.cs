@@ -55,7 +55,7 @@ namespace _Scripts.Managers
             else if (diceValue == 6)
             {
                 var newInPlayPiece = player.AddOnePieceToPlay();
-                _moveHandler.ApplyMove(player,newInPlayPiece,1,_board);
+                _moveHandler.ApplyMove(player,newInPlayPiece,0,_board);
             }
             else
             {
