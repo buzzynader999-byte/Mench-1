@@ -1,35 +1,46 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using _Scripts.Players;
 using _Scripts.Tiles;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Scripts.Boards
 {
     public class Board : MonoBehaviour, IBoard
     {
         [SerializeField] PathKeeper pathKeeper;
-        [SerializeField] private Tile[] startTiles;
-        [SerializeField] private Tile[] goalTiles;
+        [SerializeField] List<PlayerPieceStation> playerPieceStations;
 
-        public ITile GetTile(int playerId, int index)
+        public ITile GetTile(PlayerColor color, int index)
         {
-            throw new System.NotImplementedException();
+            return pathKeeper.GetPath(color)[index];
         }
 
-        public ITile GetStartTile(int playerId)
+        public ITile GetStartTile(PlayerColor color)
         {
-            throw new System.NotImplementedException();
+            return pathKeeper.GetPath(color)[0];
         }
 
-        public ITile GetGoalTile(int playerId)
+        public ITile GetGoalTile(PlayerColor color)
         {
-            throw new System.NotImplementedException();
+            return pathKeeper.GetPath(color)[^1];
         }
 
-        public void InitializeBoard()
+        public void InitializeBoard(List<Player> players)
         {
-            
+            foreach (var player in players)
+            {
+                player.Path = (pathKeeper.GetPath(player.GetColor()));
+            }
+
+            foreach (var station in playerPieceStations)
+            {
+                foreach (var player in players.Where(t => station.TargetColor == t.GetColor()))
+                {
+                    station.SetUpPiecesInStation(player);
+                }
+            }
         }
 
         public List<Tile> GetPath(PlayerColor targetPlayer)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Scripts.Boards;
 using _Scripts.Dices;
 using _Scripts.GameRules;
+using _Scripts.Pieces;
 using _Scripts.Pieces.Move;
 using _Scripts.Players;
 using _Scripts.Turn;
@@ -13,29 +14,40 @@ namespace _Scripts.Managers
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField]private Board _board;
+        [SerializeField] private Board _board;
         private TurnManager _turnManager;
         MoveHandler _moveHandler = new MoveHandler();
         private Dice _dice = new Dice();
         private LudoRule _gameRule;
-        [SerializeField] private Player p1;
-        [SerializeField] private Player p2;
+        [SerializeField] List<Player> players = new List<Player>();
+        [SerializeField] [Range(0, 6)] private int fakeRoll;
+
         private void Start()
         {
-            _board.InitializeBoard();
-            _turnManager = new TurnManager(new List<IPlayer> { p1,p2 });
+            _board.InitializeBoard(players);
+            _turnManager = new TurnManager(players);
         }
 
-        public void PlayTurn(int pieceIndex)
+        public void PlayTurn()
         {
             var player = _turnManager.GetCurrentPlayer();
-            int diceValue = _dice.Roll();
-            var piece = player.GetPieces()[pieceIndex];
+            var piece = player.GetPieces()[0]; //todo: use player selection piece
+            PerformMove(player, piece);
+        }
+
+        void PerformMove(Player player, Piece piece)
+        {
+            var diceValue = fakeRoll == 0 ? _dice.Roll() : fakeRoll;
+            print(diceValue);
             if (_moveHandler.ValidateMove(player, piece, diceValue, _board))
             {
                 _moveHandler.ApplyMove(player, piece, diceValue, _board);
-                //if (_dice.CanRollAgain()) _turnManager.GrantExtraTurn();
-                //else _turnManager.SwitchTurn();
+                if (fakeRoll == 0 ? _dice.CanRollAgain() : fakeRoll == 6)
+                {
+                    _turnManager.GrantExtraTurn();
+                    //PlayTurn();
+                }
+                else _turnManager.SwitchTurn();
                 //if (_gameRule.IsGameOver(_board)) EndGame(_gameRule.GetWinner(_board));
             }
         }
@@ -44,7 +56,7 @@ namespace _Scripts.Managers
         {
             if (Keyboard.current.mKey.wasPressedThisFrame)
             {
-                PlayTurn(0);
+                PlayTurn();
             }
         }
 

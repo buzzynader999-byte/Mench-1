@@ -9,8 +9,7 @@ namespace _Scripts.Dices
 
         public int Roll()
         {
-            Debug.Log("Fake roll");
-            _lastRoll = 3;
+            _lastRoll = Random.Range(1, 7);
             return _lastRoll;
         }
 

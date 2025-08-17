@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace _Scripts.Pieces.Move
 {
-    public class MoveHandler:IMoveHandler
+    public class MoveHandler : IMoveHandler
     {
         public bool ValidateMove(IPlayer player, IPiece piece, int diceValue, IBoard board)
         {
-            Debug.Log("Fake validate");
-            return true;
+            var pieceTileIndex = piece.CurrentTileIndex;
+            return pieceTileIndex + diceValue <= player.Path.Count;
         }
 
         public void ApplyMove(IPlayer player, IPiece piece, int diceValue, IBoard board)
         {
             var targetPos = piece.CurrentTileIndex + diceValue;
             var path = board.GetPath(player.GetColor());
-            piece.MoveToTile(path[targetPos],targetPos);
+            piece.MoveToTile(path[targetPos], targetPos);
         }
 
         public bool CanPieceEnterPlay(IPlayer player, int diceValue, IBoard board)

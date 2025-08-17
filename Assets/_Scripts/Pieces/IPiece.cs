@@ -6,7 +6,6 @@ namespace _Scripts.Pieces
     {
         public int CurrentTileIndex { get; }
         int GetPlayerId();
-        ITile GetCurrentTile();
         void MoveToTile(ITile tile,int tileIndex);
         bool IsInPlay();
         bool IsInGoal();

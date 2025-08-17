@@ -33,7 +33,7 @@ namespace _Scripts.Tiles
                 return path;
             }
 
-            Debug.LogError(color + " path not found");
+            //Debug.LogError(color + " path not found");
             return null;
         }
     }

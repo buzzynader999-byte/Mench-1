@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Scripts.Pieces;
-using UnityEngine;
+using _Scripts.Tiles;
 
 namespace _Scripts.Players
 {
@@ -15,8 +15,10 @@ namespace _Scripts.Players
 
     public interface IPlayer
     {
+        List<Tile> Path { set; get; }
         int GetId();
         List<Piece> GetPieces();
         PlayerColor GetColor();
+
     }
 }

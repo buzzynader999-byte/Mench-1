@@ -4,7 +4,7 @@ namespace _Scripts.Turn
 {
     public interface ITurnManager
     {
-        IPlayer GetCurrentPlayer();
+        Player GetCurrentPlayer();
         void SwitchTurn();
         void GrantExtraTurn();
     }

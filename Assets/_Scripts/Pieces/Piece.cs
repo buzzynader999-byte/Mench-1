@@ -18,11 +18,6 @@ namespace _Scripts.Pieces
             throw new System.NotImplementedException();
         }
 
-        public ITile GetCurrentTile()
-        {
-            return _currentTile;
-        }
-        
         public void MoveToTile(ITile tile, int tileIndex)
         {
             CurrentTileIndex = tileIndex;

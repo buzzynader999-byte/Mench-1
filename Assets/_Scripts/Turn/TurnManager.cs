@@ -1,22 +1,21 @@
 ﻿using System.Collections.Generic;
 using _Scripts.Players;
-using UnityEngine;
 
 namespace _Scripts.Turn
 {
     public class TurnManager : ITurnManager
     {
-        private IPlayer _currentPlayer;
-        private List<IPlayer> _players;
+        private Player _currentPlayer;
+        private List<Player> _players;
         private int _currentPlayerIndex = 0;
 
-        public TurnManager(List<IPlayer> players)
+        public TurnManager(List<Player> players)
         {
             _players = players;
             _currentPlayer = _players[0];
         }
 
-        public IPlayer GetCurrentPlayer()
+        public Player GetCurrentPlayer()
         {
             return _currentPlayer;
         }
@@ -29,7 +28,7 @@ namespace _Scripts.Turn
 
         public void GrantExtraTurn()
         {
-            throw new System.NotImplementedException();
+            //...
         }
     }
 }

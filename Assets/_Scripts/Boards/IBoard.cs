@@ -7,10 +7,10 @@ namespace _Scripts.Boards
     public interface IBoard
     {
 
-        ITile GetTile(int playerId, int index);
-        ITile GetStartTile(int playerId);
-        ITile GetGoalTile(int playerId);
-        void InitializeBoard();
+        ITile GetTile(PlayerColor color,int index);
+        ITile GetStartTile(PlayerColor color);
+        ITile GetGoalTile(PlayerColor color);
+        void InitializeBoard(List<Player> players);
         List<Tile> GetPath(PlayerColor targetPlayer);
     }
 }
