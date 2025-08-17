@@ -7,9 +7,9 @@ namespace _Scripts.Players
 {
     public enum PlayerColor
     {
+        Yellow = 0,
         Blue,
         Red,
-        Yellow,
         Green
     }
 
@@ -19,6 +19,5 @@ namespace _Scripts.Players
         int GetId();
         List<Piece> GetPieces();
         PlayerColor GetColor();
-
     }
 }

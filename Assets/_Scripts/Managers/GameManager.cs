@@ -39,16 +39,27 @@ namespace _Scripts.Managers
         {
             var diceValue = fakeRoll == 0 ? _dice.Roll() : fakeRoll;
             print(diceValue);
-            if (_moveHandler.ValidateMove(player, piece, diceValue, _board))
+            if (player.HasPiecesInPlay())
             {
-                _moveHandler.ApplyMove(player, piece, diceValue, _board);
-                if (fakeRoll == 0 ? _dice.CanRollAgain() : fakeRoll == 6)
+                if (_moveHandler.ValidateMove(player, piece, diceValue, _board))
                 {
-                    _turnManager.GrantExtraTurn();
-                    //PlayTurn();
+                    _moveHandler.ApplyMove(player, piece, diceValue, _board);
+                    if (fakeRoll == 0 ? _dice.CanRollAgain() : fakeRoll == 6)
+                    {
+                        _turnManager.GrantExtraTurn();
+                    }
+                    else _turnManager.SwitchTurn();
+                    //if (_gameRule.IsGameOver(_board)) EndGame(_gameRule.GetWinner(_board));
                 }
-                else _turnManager.SwitchTurn();
-                //if (_gameRule.IsGameOver(_board)) EndGame(_gameRule.GetWinner(_board));
+            }
+            else if (diceValue == 6)
+            {
+                var newInPlayPiece = player.AddOnePieceToPlay();
+                _moveHandler.ApplyMove(player,newInPlayPiece,1,_board);
+            }
+            else
+            {
+                _turnManager.SwitchTurn();
             }
         }
 

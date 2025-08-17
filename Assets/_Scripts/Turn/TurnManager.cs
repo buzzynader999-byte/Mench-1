@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Scripts.Players;
+using UnityEngine;
 
 namespace _Scripts.Turn
 {
@@ -12,7 +13,7 @@ namespace _Scripts.Turn
         public TurnManager(List<Player> players)
         {
             _players = players;
-            _currentPlayer = _players[0];
+            ChangePlayer(0);
         }
 
         public Player GetCurrentPlayer()
@@ -23,12 +24,20 @@ namespace _Scripts.Turn
         public void SwitchTurn()
         {
             _currentPlayerIndex++;
-            _currentPlayer = _players[_currentPlayerIndex % _players.Count];
+            ChangePlayer(_currentPlayerIndex % _players.Count);
         }
 
         public void GrantExtraTurn()
         {
             //...
+        }
+
+        void ChangePlayer(int index)
+        {
+            _currentPlayer = _players[index];
+            TestPlayerTurnDisplayer.Instance.ChangePlayer((int)_currentPlayer.GetColor());
+            Debug.Log(_currentPlayer.GetColor() + " Turn");
+            Debug.Log(_currentPlayer.GetColor() + "------------------------");
         }
     }
 }
