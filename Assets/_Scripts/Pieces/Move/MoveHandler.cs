@@ -16,22 +16,15 @@ namespace _Scripts.Pieces.Move
         public List<Piece> ValidateMoveForAll(IPlayer player, List<int> diceRolls)
         {
             List<Piece> movablePlayers = new List<Piece>();
-            if (player.HasPiecesInPlay())
+            if (!player.HasPiecesInPlay()) return movablePlayers;
+            foreach (var piece in player.Pieces)
             {
-                foreach (var piece in player.Pieces)
+                foreach (var diceRoll in diceRolls)
                 {
-                    foreach (var diceRoll in diceRolls)
-                    {
-                        if (piece.IsInPlay)
-                        {
-                            var pieceTileIndex = piece.CurrentTileIndex;
-                            if (pieceTileIndex + diceRoll <= player.Path.Count)
-                            {
-                                if (!movablePlayers.Contains(piece))
-                                    movablePlayers.Add(piece);
-                            }
-                        }
-                    }
+                    if (!piece.IsInPlay || piece.CurrentTileIndex + diceRoll > player.Path.Count) continue;
+                    if (movablePlayers.Contains(piece)) continue;
+                    piece.Selectable = true;
+                    movablePlayers.Add(piece);
                 }
             }
 

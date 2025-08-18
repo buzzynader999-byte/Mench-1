@@ -14,6 +14,23 @@ namespace _Scripts.Players
         [SerializeField] private List<Piece> pieces;
         [SerializeField] private PlayerColor color;
         public PlayerColor Color => color;
+        public void OnTurnStart()
+        {
+            foreach (var piece in pieces)
+            {
+                piece.gameObject.transform.localScale *= 1.3f;
+            }
+        }
+
+        public void OnTurnEnd()
+        {
+            foreach (var piece in pieces)
+            {
+                piece.Selectable = false;
+                piece.gameObject.transform.localScale /= 1.3f;
+            }
+        }
+
         public List<Tile> Path { set; get; }
         public List<Piece> Pieces => pieces;
         public static bool CanSelectPiece = false;

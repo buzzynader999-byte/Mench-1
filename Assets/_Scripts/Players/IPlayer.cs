@@ -24,5 +24,7 @@ namespace _Scripts.Players
         int Id { get; }
         List<Piece> Pieces { get; }
         PlayerColor Color { get; }
+        void OnTurnStart();
+        void OnTurnEnd();
     }
 }

@@ -10,6 +10,7 @@ using _Scripts.Players;
 using _Scripts.Turn;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Networking;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Managers
@@ -30,29 +31,32 @@ namespace _Scripts.Managers
             _turnManager = new TurnManager(players);
         }
 
-        public void PlayTurn()
+        private void Update()
         {
-            var player = _turnManager.GetCurrentPlayer();
-            //var piece = player.Pieces[0]; //todo: use player selection piece
-            PerformTurn(player); //, piece);
+            if (Keyboard.current.mKey.wasPressedThisFrame)
+            {
+                PerformTurn();
+            }
+        }
+
+        void PerformTurn()
+        {
+            StartCoroutine(PerformDice());
         }
 
         IEnumerator PerformDice()
         {
-            var diceValue = fakeRoll == 0 ? _dice.Roll() : fakeRoll;
-            print(diceValue);
-            if (diceValue == 6)
+            _dice.FakeRoll(fakeRoll);
+            print(_dice.LastRoll);
+            if (_dice.CanRollAgain())
             {
-                _dice.NumberOfSixes++;
                 if (_dice.NumberOfSixes >= 3)
                 {
                     print(_turnManager.GetCurrentPlayer().Color + " turn burned");
-                    _turnManager.SwitchTurn();
-                    _dice.NumberOfSixes = 0;
+                    NextPlayer();
                 }
                 else
                 {
-                    _turnManager.DiceRolls.Add(diceValue);
                     yield return new WaitForSeconds(1);
                     print("Perform dice again");
                     StartCoroutine(PerformDice());
@@ -60,110 +64,83 @@ namespace _Scripts.Managers
             }
             else
             {
-                _turnManager.DiceRolls.Add(diceValue);
-                _dice.NumberOfSixes = 0;
+                print("Dice ended");
                 StartCoroutine(PerformMove(_turnManager.GetCurrentPlayer()));
             }
-
-            print("Dice ended");
         }
 
-        IEnumerator PerformMove(Player player)
+        private IEnumerator PerformMove(Player player)
         {
-            var allMovablePieces = _moveHandler.ValidateMoveForAll(player, _turnManager.DiceRolls);
-            if (allMovablePieces?.Count >= 1)
+            var movablePieces = _moveHandler.ValidateMoveForAll(player, _dice.DiceRolls);
+            if (movablePieces?.Count >= 1 && _dice.DiceRolls.Count >= 1)
             {
+                print("we have movable pieces");
                 // let player selects pieces
                 //todo: handle player selection move
 
-                var targetPiece = allMovablePieces[Random.Range(0, allMovablePieces.Count)];
-                allMovablePieces.Remove(targetPiece);
 
-                var selectedDice = _turnManager.DiceRolls[Random.Range(0, _turnManager.DiceRolls.Count)];
-                _turnManager.DiceRolls.Remove(selectedDice);
-                if (_moveHandler.ValidateMove(player, targetPiece, selectedDice))
+                var targetPiece = GetPiece(movablePieces);
+                int selectedDice = 0;
+                foreach (var diceDiceRoll in _dice.DiceRolls)
                 {
-                    _moveHandler.ApplyMove(player, targetPiece, selectedDice);
-                    yield return new WaitForSeconds(1);
-                    if (_turnManager.DiceRolls.Count >= 1)
-                    {
-                        StartCoroutine(PerformMove(player));
-                    }
-                    else
-                    {
-                        _turnManager.SwitchTurn();
-                        _dice.NumberOfSixes = 0;
-                    }
+                    if (!_moveHandler.ValidateMove(player, targetPiece, diceDiceRoll)) continue;
+                    selectedDice = diceDiceRoll;
                 }
+
+                _dice.DiceRolls?.Remove(selectedDice);
+                print("Dice available numbers count " + _dice.DiceRolls.Count);
+
+                //if (_moveHandler.ValidateMove(player, targetPiece, selectedDice))
+                //{
+                _moveHandler.ApplyMove(player, targetPiece, selectedDice);
+                yield return new WaitForSeconds(1);
+                if (_dice.DiceRolls.Count >= 1)
+                {
+                    StartCoroutine(PerformMove(player));
+                }
+                else
+                {
+                    NextPlayer();
+                }
+                //}
             }
-            else if (_turnManager?.DiceRolls[0] == 6)
+            else if (_dice?.DiceRolls[0] == 6)
             {
                 var newInPlayPiece = player.AddOnePieceToPlay();
                 if (!newInPlayPiece) // if it is null, then it mean all pieces are in play
                 {
-                    _turnManager.SwitchTurn();
-                    _dice.NumberOfSixes = 0;
+                    NextPlayer();
                 }
                 else
                 {
-                    _turnManager.DiceRolls.RemoveAt(0);
-                    if (_turnManager.DiceRolls.Count >= 1)
+                    _dice.DiceRolls.RemoveAt(0);
+                    if (_dice.DiceRolls.Count >= 1)
                     {
                         StartCoroutine(PerformMove(player));
-                        /*allMovablePieces = _moveHandler.ValidateMoveForAll(player, _turnManager.DiceRolls);
-                        if (allMovablePieces?.Count >= 1)
-                        {
-                            // let player selects pieces
-                            //todo: handle player selection move
-                            var targetPiece = allMovablePieces[Random.Range(0, allMovablePieces.Count)];
-                            if (_moveHandler.ValidateMove(player, targetPiece, diceValue))
-                            {
-                                _moveHandler.ApplyMove(player, targetPiece, diceValue);
-                            }
-                        }*/
                     }
                 }
             }
             else
             {
-                _turnManager.SwitchTurn();
-                _dice.NumberOfSixes = 0;
+                NextPlayer();
             }
         }
 
-        void PerformTurn(Player player)
+        void NextPlayer()
         {
-            StartCoroutine(PerformDice());
-
-
-            /*if (player.HasPiecesInPlay() && _moveHandler.ValidateMove(player, piece, diceValue, _board))
-            {
-                _moveHandler.ApplyMove(player, piece, diceValue, _board);
-                if (fakeRoll == 0 ? _dice.CanRollAgain() : fakeRoll == 6)
-                {
-                    _turnManager.GrantExtraTurn();
-                }
-                else _turnManager.SwitchTurn();
-                //if (_gameRule.IsGameOver(_board)) EndGame(_gameRule.GetWinner(_board));
-            }
-            else if (diceValue == 6)
-            {
-                print(player.HasPiecesInPlay() + " no in play pieces yet. will added");
-                var newInPlayPiece = player.AddOnePieceToPlay();
-                _moveHandler.ApplyMove(player, newInPlayPiece, 0, _board);
-            }
-            else
-            {
-                _turnManager.SwitchTurn();
-            }*/
+            _turnManager.SwitchTurn();
+            _dice.Reset();
         }
 
-        private void Update()
+        Piece GetPiece(List<Piece> movablePieces)
         {
-            if (Keyboard.current.mKey.wasPressedThisFrame)
-            {
-                PlayTurn();
-            }
+            //todo: select with player choose later
+            return movablePieces[Random.Range(0, movablePieces.Count)];
+        }
+
+        int GetSelectedDice()
+        {
+            return _dice.DiceRolls[Random.Range(0, _dice.DiceRolls.Count)];
         }
 
         private void EndGame(IPlayer winner)

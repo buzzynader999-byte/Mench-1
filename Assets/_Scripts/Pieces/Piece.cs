@@ -12,6 +12,7 @@ namespace _Scripts.Pieces
         public int CurrentTileIndex { private set; get; }
         public bool IsInPlay { set; get; } = false;
         public Player Player { get; set; }
+        public bool Selectable { get; set; }
 
         public int GetPlayerId()
         {

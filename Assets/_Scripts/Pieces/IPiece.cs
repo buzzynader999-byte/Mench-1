@@ -9,5 +9,7 @@ namespace _Scripts.Pieces
         int GetPlayerId();
         void MoveToTile(ITile tile,int tileIndex);
         bool IsInGoal();
+        public bool Selectable { get; set; }
+
     }
 }

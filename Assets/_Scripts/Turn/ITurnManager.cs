@@ -8,6 +8,5 @@ namespace _Scripts.Turn
         Player GetCurrentPlayer();
         void SwitchTurn();
         void GrantExtraTurn();
-        List<int> DiceRolls { get; }
     }
 }
