@@ -8,6 +8,7 @@ namespace _Scripts.Tiles
         [SerializeField] private bool isSafe;
         [SerializeField] private bool isGoal;
         private IPiece _currentPiece;
+        public bool IsGoalTile => isGoal;
 
         public bool IsOccupied()
         {
@@ -34,10 +35,6 @@ namespace _Scripts.Tiles
             throw new System.NotImplementedException();
         }
 
-        public bool IsGoalTile()
-        {
-            throw new System.NotImplementedException();
-        }
 
         public Vector3 GetPosition()
         {

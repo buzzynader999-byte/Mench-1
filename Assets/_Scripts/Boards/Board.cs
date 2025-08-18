@@ -30,12 +30,12 @@ namespace _Scripts.Boards
         {
             foreach (var player in players)
             {
-                player.Path = (pathKeeper.GetPath(player.GetColor()));
+                player.Path = (pathKeeper.GetPath(player.Color));
             }
 
             foreach (var station in playerPieceStations)
             {
-                foreach (var player in players.Where(t => station.TargetColor == t.GetColor()))
+                foreach (var player in players.Where(t => station.TargetColor == t.Color))
                 {
                     station.SetUpPiecesInStation(player);
                 }

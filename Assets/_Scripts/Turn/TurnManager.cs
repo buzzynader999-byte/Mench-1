@@ -25,6 +25,7 @@ namespace _Scripts.Turn
         {
             _currentPlayerIndex++;
             ChangePlayer(_currentPlayerIndex % _players.Count);
+            DiceRolls.Clear();
         }
 
         public void GrantExtraTurn()
@@ -32,12 +33,14 @@ namespace _Scripts.Turn
             //...
         }
 
+        public List<int> DiceRolls { get; } = new List<int>();
+
         void ChangePlayer(int index)
         {
             _currentPlayer = _players[index];
-            TestPlayerTurnDisplayer.Instance.ChangePlayer((int)_currentPlayer.GetColor());
-            Debug.Log(_currentPlayer.GetColor() + " Turn");
-            Debug.Log(_currentPlayer.GetColor() + "------------------------");
+            TestPlayerTurnDisplayer.Instance.ChangePlayer((int)_currentPlayer.Color);
+            //Debug.Log(_currentPlayer.Color + " Turn");
+            //Debug.Log(_currentPlayer.Color + "------------------------");
         }
     }
 }

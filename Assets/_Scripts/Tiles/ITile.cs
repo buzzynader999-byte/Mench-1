@@ -21,7 +21,7 @@ namespace _Scripts.Tiles
         bool IsStartTile();
 
         // نقطه آخر یا هدفه؟
-        bool IsGoalTile();
+        bool IsGoalTile { get; }
         public Vector3 GetPosition();
     }
 }

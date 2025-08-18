@@ -1548,7 +1548,7 @@ MonoBehaviour:
   - {fileID: 1517508091}
   - {fileID: 712336208}
   - {fileID: 13388996}
-  targetColor: 2
+  targetColor: 0
 --- !u!1001 &1132487080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2703,7 +2703,7 @@ MonoBehaviour:
   - {fileID: 1489116060}
   - {fileID: 1511807563}
   - {fileID: 602430767}
-  targetColor: 0
+  targetColor: 1
 --- !u!1 &2030423718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,7 +2757,7 @@ MonoBehaviour:
   - {fileID: 866156463}
   - {fileID: 2071375257}
   - {fileID: 1132487081}
-  targetColor: 1
+  targetColor: 2
 --- !u!1001 &2055322352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2901,6 +2901,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 949757508260161602, guid: 2129a11836fced248acdd419531cc870, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 949757508260161602, guid: 2129a11836fced248acdd419531cc870, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4245466972064190101, guid: 2129a11836fced248acdd419531cc870, type: 3}
       propertyPath: m_Name
       value: Test Turn Displayer
@@ -3207,7 +3215,7 @@ PrefabInstance:
       objectReference: {fileID: 1802707348}
     - target: {fileID: 8911213568730896962, guid: 8a8f36c077cf29d45987cdd12d0c36ad, type: 3}
       propertyPath: fakeRoll
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8911213568730896962, guid: 8a8f36c077cf29d45987cdd12d0c36ad, type: 3}
       propertyPath: players.Array.size

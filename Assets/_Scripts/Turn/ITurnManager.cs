@@ -1,4 +1,5 @@
-﻿using _Scripts.Players;
+﻿using System.Collections.Generic;
+using _Scripts.Players;
 
 namespace _Scripts.Turn
 {
@@ -7,5 +8,6 @@ namespace _Scripts.Turn
         Player GetCurrentPlayer();
         void SwitchTurn();
         void GrantExtraTurn();
+        List<int> DiceRolls { get; }
     }
 }

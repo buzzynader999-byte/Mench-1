@@ -12,7 +12,7 @@ namespace _Scripts
 
         public void SetUpPiecesInStation(Player targetPlayer)
         {
-            var pieces = targetPlayer.GetPieces();
+            var pieces = targetPlayer.Pieces;
             for (var i = 0; i < pieces.Count; i++)
             {
                 pieces[i].transform.position = piecePlaces[i].transform.position;

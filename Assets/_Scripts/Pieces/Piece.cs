@@ -1,4 +1,5 @@
-﻿using _Scripts.Tiles;
+﻿using _Scripts.Players;
+using _Scripts.Tiles;
 using UnityEngine;
 
 namespace _Scripts.Pieces
@@ -9,7 +10,8 @@ namespace _Scripts.Pieces
         private ITile _currentTile;
         private bool _inPlay, _inGoal;
         public int CurrentTileIndex { private set; get; }
-        public bool IsInPlay { set; get; }
+        public bool IsInPlay { set; get; } = false;
+        public Player Player { get; set; }
 
         public int GetPlayerId()
         {
@@ -18,13 +20,17 @@ namespace _Scripts.Pieces
 
         public void MoveToTile(ITile tile, int tileIndex)
         {
+            if (tile.IsGoalTile)
+            {
+                Player.CheckForWin();
+            }
             CurrentTileIndex = tileIndex;
             transform.position = tile.GetPosition();
         }
 
         public bool IsInGoal()
         {
-            throw new System.NotImplementedException();
+            return _inGoal;
         }
     }
 }

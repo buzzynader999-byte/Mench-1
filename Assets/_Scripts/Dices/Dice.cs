@@ -6,6 +6,7 @@ namespace _Scripts.Dices
     {
         private int _lastRoll;
         private bool _extraRoll;
+        public int NumberOfSixes { set; get; } = 0;
 
         public int Roll()
         {
